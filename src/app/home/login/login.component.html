@@ -1,6 +1,6 @@
 <h4 class="text-center">Login</h4>
 
-<form class="form mt-4" (ngSubmit)="login()">
+<form class="form mt-4" (ngSubmit)="login()" #logiForm="ngForm">
 
   <div class="form-group">
     <input 
@@ -8,7 +8,12 @@
         placeholder="Nome do usuario"
         [(ngModel)]="usuario"
         name="usuario"
+        #campoUsuario="ngModel"
+        required
      />
+     <app-mensagem
+      *ngIf="campoUsuario.invalid && campoUsuario.touched"
+      mensagem="Usuario Obrigatorio"></app-mensagem>
   </div>
 
   <div class="form-group">
@@ -18,8 +23,14 @@
         placeholder="senha"
         [(ngModel)]="senha"
         name="senha"
+        #campoSenha="ngModel"
+        required
     />
+        <app-mensagem
+         *ngIf="campoSenha.invalid && campoSenha.touched"
+         mensagem="Senha Obrigatoria">
+        </app-mensagem>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block">Login</button>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="logiForm.invalid" >Login</button>
 </form>
