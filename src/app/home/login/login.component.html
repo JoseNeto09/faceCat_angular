@@ -32,5 +32,8 @@
         </app-mensagem>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block" [disabled]="logiForm.invalid" >Login</button>
+  <button
+   type="submit" class="btn btn-primary btn-block" [disabled]="logiForm.invalid" >Login</button>
 </form>
+
+<p>Não e um Usuario?<a [routerLink]="['novousuario']">se cadastre!</a></p>
